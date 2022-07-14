@@ -1,19 +1,34 @@
-import { ListGroup, Badge } from "react-bootstrap";
+import { ListGroup, Badge, Image } from "react-bootstrap";
 
-const SummonerItem = ({ name, level }) => {
+const SummonerItem = ({
+    name,
+    level,
+    icon
+}) => {
+
+    const ICON_URL = "http://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/"
+
     return (
         <ListGroup.Item
             as="li"
             key={name}
             className="d-flex justify-content-center align-items-center"
         >
-            <Badge bg="primary" pill>
+            <Image
+                rounded
+                src={`${ICON_URL}${icon}.png`}
+                className="mx-2"
+                width="50px"
+            />
+            <Badge
+                bg="primary"
+                pill
+            >
                 {level}
             </Badge>
             <div className="ms-2 me-auto">
                 <div className="fw-bold">{name}</div>
             </div>
-
         </ListGroup.Item>
     );
 }
