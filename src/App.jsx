@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from 'axios';
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { TeamController } from "./components/TeamController";
@@ -6,7 +6,7 @@ import TeamList from "./components/TeamList";
 
 function App() {
 
-  const API_KEY = "RGAPI-349e10bd-341e-4b97-8253-7639106d7cb5";
+  const API_KEY = "RGAPI-f61f8ba6-6931-4e9f-8ca9-1cf1e9abb1dd";
   const QUERY_URL = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 
   const [summonerName, setSummonerName] = useState("");
@@ -35,6 +35,14 @@ function App() {
     e.preventDefault();
   }
 
+  const clearSummonerBank = () => setSummonerBank([]);
+  const resetSummonerBank = (list1, list2) => {
+    if (list1.length > 0 && list2.length > 0)
+      setSummonerBank([...list1, ...list2])
+    else
+      alert('hmmm.. no one to reset?')
+  };
+
   return (
     <Container
       fluid="true"
@@ -43,7 +51,8 @@ function App() {
       <Container>
         <Row>
           <Col>
-            <h1>League Team Randomizer</h1>
+            <h1>Custom Game Tracker</h1>
+            <h2 className="lead">League of Legends</h2>
             <Form onSubmit={fetchSummonerData}>
               <Form.Group
                 className="mb-3"
@@ -89,11 +98,16 @@ function App() {
             <TeamList
               teamName="Summoner Bank"
               teamList={summonerBank}
+              theme="dark"
             />
           </Col>
         </Row>
       </Container>
-      <TeamController summonerBank={summonerBank} />
+      <TeamController
+        summonerBank={summonerBank}
+        clearBank={clearSummonerBank}
+        resetBank={resetSummonerBank}
+      />
     </Container>
   );
 }

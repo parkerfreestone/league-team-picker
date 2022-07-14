@@ -1,26 +1,47 @@
 import React, { useState } from "react";
-import { Col, Row, Container, Button, ListGroup } from "react-bootstrap";
+import { Col, Row, Container, Button } from "react-bootstrap";
 import TeamList from "./TeamList";
+import { Shuffle, ArrowBarUp, Trash } from "react-bootstrap-icons";
 
-export const TeamController = ({ summonerBank }) => {
+export const TeamController = ({
+    summonerBank,
+    clearBank,
+    resetBank,
+}) => {
 
     const [teamOne, setTeamOne] = useState([]);
     const [teamTwo, setTeamTwo] = useState([]);
 
     const randomizeTeams = () => {
-        summonerBank.sort(() => Math.random() - 0.5);
-        for (let i = 0; i > summonerBank.length; i++) {
-            if (!teamOne.length >= Math.floor(summonerBank.length / 2)) {
-                let newTeamList = summonerBank.concat(summonerBank[i])
-                setTeamOne(newTeamList);
-                console.log("Here")
-            } else {
-                let newTeamList = summonerBank.concat(summonerBank[i])
-                setTeamTwo(newTeamList);
-                console.log("here")
-            }
+
+        let newTeamOne = [];
+        let newTeamTwo = [];
+
+        if (summonerBank.length >= 2) {
+            summonerBank.sort(() => Math.random() - 0.5);
+            summonerBank.forEach((summoner, index) => {
+                if (index % 2 === 0) {
+                    newTeamOne.push(summoner);
+                } else {
+                    newTeamTwo.push(summoner);
+                }
+            });
+            setTeamOne(newTeamOne);
+            setTeamTwo(newTeamTwo);
+            clearBank();
+        } else {
+            alert('You need at least 2 summoners!');
         }
-        console.log(teamOne);
+    }
+
+    const clearTeams = () => {
+        setTeamOne([]);
+        setTeamTwo([]);
+    }
+
+    const resetBankAndClearTeams = () => {
+        resetBank(teamOne, teamTwo);
+        clearTeams();
     }
 
     return (
@@ -31,14 +52,23 @@ export const TeamController = ({ summonerBank }) => {
                         variant="primary"
                         onClick={randomizeTeams}
                     >
+                        <Shuffle className="mx-1" />
                         Randomize Teams
                     </Button>
                     <Button
                         className="mx-3"
-                        variant="secondary"
-                        onClick={randomizeTeams}
+                        variant="warning"
+                        onClick={resetBankAndClearTeams}
                     >
+                        <ArrowBarUp className="mx-1" />
                         Reset
+                    </Button>
+                    <Button
+                        variant="danger"
+                        onClick={clearTeams}
+                    >
+                        <Trash className="mx-1" />
+                        Clear All
                     </Button>
                 </Col>
             </Row>
@@ -47,16 +77,18 @@ export const TeamController = ({ summonerBank }) => {
                     <TeamList
                         teamName="Team 1"
                         teamList={teamOne}
+                        theme="secondary"
                     />
                 </Col>
                 <Col lg={6}>
                     <TeamList
                         teamName="Team 2"
                         teamList={teamTwo}
+                        theme="secondary"
                     />
                 </Col>
             </Row>
 
-        </Container>
+        </Container >
     );
 }
