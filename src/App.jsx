@@ -4,7 +4,7 @@ import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import { TeamController } from "./components/TeamController";
 import TeamList from "./components/TeamList";
 
-function App() {
+const App = () => {
 
   const API_KEY = "RGAPI-f61f8ba6-6931-4e9f-8ca9-1cf1e9abb1dd";
   const QUERY_URL = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
@@ -22,7 +22,7 @@ function App() {
       })
       .catch(err => {
         alert(err?.message === "Network Error"
-          ? "Summoner Not Found!"
+          ? `Summoner: ${summonerName}, not Found...`
           : err.message
         );
       })
