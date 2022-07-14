@@ -56,7 +56,7 @@ export const TeamController = ({
                         Randomize Teams
                     </Button>
                     <Button
-                        className="mx-3"
+                        className="m-3"
                         variant="warning"
                         onClick={resetBankAndClearTeams}
                     >
