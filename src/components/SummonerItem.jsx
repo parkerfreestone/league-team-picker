@@ -6,7 +6,7 @@ const SummonerItem = ({
     icon
 }) => {
 
-    const ICON_URL = "http://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/"
+    const ICON_URL = "https://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/"
 
     return (
         <ListGroup.Item
