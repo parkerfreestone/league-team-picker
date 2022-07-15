@@ -7,6 +7,7 @@ const TeamController = ({
     summonerBank,
     clearBank,
     resetBank,
+    removeSummoner,
 }) => {
 
     const [teamOne, setTeamOne] = useState([]);
@@ -29,7 +30,11 @@ const TeamController = ({
             setTeamOne(newTeamOne);
             setTeamTwo(newTeamTwo);
             clearBank();
-        } else {
+        } else if (teamOne.length > 0) {
+            let conglomerate = [...teamOne, ...teamTwo];
+
+        }
+        else {
             alert('You need at least 2 summoners!');
         }
     }
@@ -81,6 +86,7 @@ const TeamController = ({
                         teamName="Team 1"
                         teamList={teamOne}
                         theme="secondary"
+                        removeSummoner={removeSummoner}
                     />
                 </Col>
                 <Col lg={6}>
@@ -88,6 +94,7 @@ const TeamController = ({
                         teamName="Team 2"
                         teamList={teamTwo}
                         theme="secondary"
+                        removeSummoner={removeSummoner}
                     />
                 </Col>
             </Row>

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { ListGroup } from "react-bootstrap";
 import SummonerItem from "./SummonerItem";
 
-const TeamList = ({ teamName, teamList, theme }) => {
+const TeamList = ({ teamName, teamList, theme, removeSummoner }) => {
 
     const [isEmpty, setIsEmpty] = useState(true);
 
@@ -12,6 +12,7 @@ const TeamList = ({ teamName, teamList, theme }) => {
             level={summoner.summonerLevel}
             icon={summoner.profileIconId}
             key={summoner.puuid}
+            removeSummoner={removeSummoner}
         />
     )
 

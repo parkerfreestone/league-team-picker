@@ -13,17 +13,17 @@ const NavigationController = () => {
         <>
             <Navbar
                 expand="lg"
-                bg="primary"
+                bg="dark"
                 variant="dark"
             >
                 <Container>
                     <Navbar.Brand>
                         <Link
                             to="/"
-                            className="navbar-brand"
+                            className="navbar-brand d-flex align-items-center"
                         >
                             <BoomboxFill className="mx-2" />
-                            Custom Game Tracker
+                            CGT
                         </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -73,7 +73,7 @@ const NavigationController = () => {
                 />
                 <Route
                     path="*"
-                    element={<Navigate to="/" repalce />}
+                    element={<Navigate to="/" replace />}
                 />
             </Routes>
         </>
