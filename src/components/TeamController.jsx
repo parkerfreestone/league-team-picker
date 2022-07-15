@@ -3,7 +3,7 @@ import { Col, Row, Container, Button } from "react-bootstrap";
 import TeamList from "./TeamList";
 import { Shuffle, ArrowBarUp, Trash } from "react-bootstrap-icons";
 
-export const TeamController = ({
+const TeamController = ({
     summonerBank,
     clearBank,
     resetBank,
@@ -46,7 +46,7 @@ export const TeamController = ({
 
     return (
         <Container className="my-5">
-            <Row className="mb-3">
+            <Row className="">
                 <Col>
                     <Button
                         variant="primary"
@@ -73,7 +73,10 @@ export const TeamController = ({
                 </Col>
             </Row>
             <Row>
-                <Col lg={6}>
+                <Col
+                    lg={6}
+                    className="mb-3 mb-lg-0"
+                >
                     <TeamList
                         teamName="Team 1"
                         teamList={teamOne}
@@ -89,6 +92,8 @@ export const TeamController = ({
                 </Col>
             </Row>
 
-        </Container >
+        </Container>
     );
 }
+
+export default TeamController;

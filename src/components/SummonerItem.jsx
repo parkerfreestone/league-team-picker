@@ -17,7 +17,7 @@ const SummonerItem = ({
             <Image
                 rounded
                 src={`${ICON_URL}${icon}.png`}
-                className="mx-2"
+                className="me-2"
                 width="50px"
             />
             <Badge
