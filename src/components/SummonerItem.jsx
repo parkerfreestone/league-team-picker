@@ -32,14 +32,14 @@ const SummonerItem = ({
                 <div className="fw-bold">{name}</div>
             </div>
             <Button
-                onClick={() => removeSummoner(name,)}
+                variant="danger"
+                onClick={() => removeSummoner(name)}
             >
                 <FileX
                     size={25}
                 />
             </Button>
-
-        </ListGroup.Item >
+        </ListGroup.Item>
     );
 }
 

@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const SummonerForm = ({ summonerBank, setSummonerBank }) => {
 
-    const API_KEY = "RGAPI-46e54044-fa90-488a-90ff-4a5dfc442a50";
+    const API_KEY = "RGAPI-893285f1-44ac-4990-9388-70bd9b175e47";
     const QUERY_URL = "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/";
 
     const [summonerName, setSummonerName] = useState("");

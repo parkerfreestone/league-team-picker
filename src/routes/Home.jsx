@@ -54,8 +54,10 @@ const Home = () => {
                                 Stats Tracker
                                 <Badge
                                     pill
+                                    bg="warning"
+                                    className="text-black"
                                 >
-                                    New
+                                    In Development
                                 </Badge>
                             </Card.Header>
                             <Card.Body>

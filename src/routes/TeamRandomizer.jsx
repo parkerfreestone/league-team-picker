@@ -10,13 +10,14 @@ const TeamRandomizer = () => {
     const [summonerBank, setSummonerBank] = useState([]);
 
     // LIST HANDLERS
+    const isInList = (value) => summonerBank.includes(value) ? false : true;
+
     const clearSummonerBank = () => setSummonerBank([]);
-    const removeSummoner = (summonerName, parentList) => {
-        for (let i = 0; i < parentList.length; i++) {
-            if (summonerBank[i] === summonerName) {
-                setSummonerBank(summonerBank.splice(i, 1));
-            }
-        }
+
+    const removeSummoner = (summonerName) => {
+        let filteredList = summonerBank.filter(isInList);
+        console.log(filteredList);
+        setSummonerBank(filteredList);
     }
     const resetSummonerBank = (list1, list2) => {
         if (list1.length > 0 && list2.length > 0)

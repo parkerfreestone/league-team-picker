@@ -13,6 +13,7 @@ const TeamList = ({ teamName, teamList, theme, removeSummoner }) => {
             icon={summoner.profileIconId}
             key={summoner.puuid}
             removeSummoner={removeSummoner}
+            parentList={teamName}
         />
     )
 

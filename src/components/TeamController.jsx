@@ -73,7 +73,7 @@ const TeamController = ({
                         onClick={clearTeams}
                     >
                         <Trash className="mx-1" />
-                        Clear All
+                        Clear Teams
                     </Button>
                 </Col>
             </Row>
