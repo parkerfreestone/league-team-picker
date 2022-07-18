@@ -1,26 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import Jumbotron from "../components/Jumbotron";
 
 import axios from 'axios';
+import GameSummary from "../components/GameSummary";
+
 
 const StatsTracker = (props) => {
 
-    const PROVIDER_QUERY_URL = "https://americas.api.riotgames.com/lol/tournament-stub/v4/providers"
-    const API_KEY = "RGAPI-46e54044-fa90-488a-90ff-4a5dfc442a50";
+    const [matchData, setMatchData] = useState({})
 
-    const fetchProviderID = () => {
-        axios.post(`${PROVIDER_QUERY_URL}?api_key=${API_KEY}`,
-            {
-                region: 'NA',
-                url: 'http://www.parkerfreestone.com',
-            })
+    const searchTerms = [
+        'assists',
+        'damageDealtToTurrets',
+        'visionScore',
+        'kills',
+        'goldEarned',
+        'largestKillingSpree',
+        'totalDamageTaken',
+        'totalMinionsKilled'
+    ]
+
+    const fetchMostRecentMatch = () => {
+        axios.get(`https://americas.api.riotgames.com/lol/match/v5/matches/by-puuid/MHJamGcfG7toVk-EEaduU_1Cz2ZkL30RQoxJpIo4CAuwOVj9kVRiERE1z4vGybbTENWH0uxr5Sb7iA/ids?start=0&count=1&api_key=RGAPI-893285f1-44ac-4990-9388-70bd9b175e47`)
             .then(res => {
-                console.log(res)
+                axios.get(`https://americas.api.riotgames.com/lol/match/v5/matches/${res.data[0]}?api_key=RGAPI-893285f1-44ac-4990-9388-70bd9b175e47`)
+                    .then(res => {
+                        setMatchData(res.data);
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    });
             })
             .catch(err => {
-                console.log(err)
-            })
+                console.log(err);
+            });
+    }
+
+    const determineRelevantMatchData = () => {
+
+        let highestValue = null;
+        let listOfReleventData = [];
+
+        searchTerms.forEach((term, i) => {
+            matchData.info.participants.forEach(participant => {
+            });
+        })
     }
 
     return (
@@ -28,13 +53,25 @@ const StatsTracker = (props) => {
             <Jumbotron
                 heading="Stats Tracker"
                 description="League of Legends Tournaments"
-                bgColor="danger"
+                bgColor="success"
                 fgColor="white"
             />
             <Container
                 className="mt-5"
             >
-                <Button variant="primary" children="get provider id" onClick={fetchProviderID} />
+                <Button
+                    variant="secondary"
+                    onClick={() => {
+                        fetchMostRecentMatch()
+                        determineRelevantMatchData();
+                    }
+                    }
+                >
+                    Get match data
+                </Button>
+                <GameSummary
+                    matchData={matchData}
+                />
             </Container>
         </>
     );

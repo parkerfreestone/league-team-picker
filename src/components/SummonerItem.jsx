@@ -5,7 +5,8 @@ const SummonerItem = ({
     name,
     level,
     icon,
-    removeSummoner
+    removeSummoner,
+    parentList
 }) => {
 
     const ICON_URL = "https://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/"
@@ -31,14 +32,19 @@ const SummonerItem = ({
             <div className="ms-2 me-auto">
                 <div className="fw-bold">{name}</div>
             </div>
-            <Button
-                variant="danger"
-                onClick={() => removeSummoner(name)}
-            >
-                <FileX
-                    size={25}
-                />
-            </Button>
+            {
+                parentList === "Summoner Bank"
+                    ? <Button
+                        variant="danger"
+                        onClick={() => removeSummoner(name)}
+                    >
+                        <FileX
+                            size={25}
+                        />
+                    </Button>
+                    : <a>Greg</a>
+            }
+
         </ListGroup.Item>
     );
 }

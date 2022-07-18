@@ -20,7 +20,7 @@ const NavigationController = () => {
                     <Navbar.Brand>
                         <Link
                             to="/"
-                            className="navbar-brand d-flex align-items-center"
+                            className="navbar-brand d-flex align-items-center fw-bold"
                         >
                             <BoomboxFill className="mx-2" />
                             CGT

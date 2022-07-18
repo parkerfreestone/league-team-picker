@@ -17,10 +17,13 @@ const SummonerForm = ({ summonerBank, setSummonerBank }) => {
                 let newBank = summonerBank.filter(n => n).concat(res.data);
                 setSummonerBank(newBank);
                 setSummonerName("");
+                console.log(res.data)
             })
             .catch(err => {
                 alert(err?.message === "Network Error"
-                    ? `Summoner: ${summonerName}, not Found...`
+                    ? `Summoner: ${summonerName}, not Found...
+                    \n\nOr API key is out of date. Contact 
+                    Mr Gandolfio#6551 for support!`
                     : err.message
                 );
             })

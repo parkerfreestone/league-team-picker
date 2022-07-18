@@ -1,17 +1,40 @@
-import React from "react";
-import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Card, Button, Badge, Alert } from "react-bootstrap";
+import { ExclamationTriangleFill } from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 import Jumbotron from "../components/Jumbotron";
 
 const Home = () => {
+
+    const [showAlert, setShowAlert] = useState(true);
+
     return (
         <>
+            <Alert
+                className="mb-0"
+                variant="warning"
+                onClose={() => showAlert(false)}
+                dismissable
+            >
+                <Container
+                    className="d-flex align-items-center"
+                >
+                    <ExclamationTriangleFill
+                        className="me-3"
+                        size={30}
+                    />
+                    This site is still heavily in development, as such do not expect anything
+                    to work! (Especially the stat tracker.)
+                </Container>
+            </Alert>
+
             <Jumbotron
                 heading="Custom Game Tracker"
                 description="A tool for randomizing team's, and creating tournaments in League of Legends."
                 bgColor="danger"
                 fgColor="white"
             />
+
             <Container
                 className="mt-5"
             >

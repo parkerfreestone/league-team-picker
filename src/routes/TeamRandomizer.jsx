@@ -15,10 +15,13 @@ const TeamRandomizer = () => {
     const clearSummonerBank = () => setSummonerBank([]);
 
     const removeSummoner = (summonerName) => {
-        let filteredList = summonerBank.filter(isInList);
-        console.log(filteredList);
+        let filteredList = summonerBank.filter(summoner => {
+            return summoner.name === summonerName
+        });
         setSummonerBank(filteredList);
+        console.log(summonerBank);
     }
+
     const resetSummonerBank = (list1, list2) => {
         if (list1.length > 0 && list2.length > 0)
             setSummonerBank([...list1, ...list2]);
@@ -31,7 +34,7 @@ const TeamRandomizer = () => {
             <Jumbotron
                 heading="Team Randomizer"
                 description="League of Legends"
-                bgColor="danger"
+                bgColor="secondary"
                 fgColor="white"
             />
             <Container
