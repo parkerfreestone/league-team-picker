@@ -19,7 +19,7 @@ const NavigationController = () => {
                 <Container>
                     <Navbar.Brand>
                         <Link
-                            to="/"
+                            to="/league-team-picker"
                             className="navbar-brand d-flex align-items-center fw-bold"
                         >
                             <BoomboxFill className="mx-2" />
@@ -31,7 +31,7 @@ const NavigationController = () => {
                         <Nav className="me-auto">
                             <Nav.Link>
                                 <Link
-                                    to="/"
+                                    to="/league-team-picker"
                                     className="nav-link"
                                 >
                                     Home
@@ -73,7 +73,7 @@ const NavigationController = () => {
                 />
                 <Route
                     path="*"
-                    element={<Navigate to="/" replace />}
+                    element={<Navigate to="/league-team-picker" replace />}
                 />
             </Routes>
         </>
