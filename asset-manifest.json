@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/league-team-picker/static/css/main.f0d685eb.css",
-    "main.js": "/league-team-picker/static/js/main.aa88c362.js",
+    "main.js": "/league-team-picker/static/js/main.035604fb.js",
     "index.html": "/league-team-picker/index.html",
     "main.f0d685eb.css.map": "/league-team-picker/static/css/main.f0d685eb.css.map",
-    "main.aa88c362.js.map": "/league-team-picker/static/js/main.aa88c362.js.map"
+    "main.035604fb.js.map": "/league-team-picker/static/js/main.035604fb.js.map"
   },
   "entrypoints": [
     "static/css/main.f0d685eb.css",
-    "static/js/main.aa88c362.js"
+    "static/js/main.035604fb.js"
   ]
 }
